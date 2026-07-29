@@ -15,7 +15,7 @@ setTimeout(() => {
   const loading = document.getElementById('ack');
   const main = document.getElementById('main');
   if (loading && main) {
-    loading.style.zIndex = '1000';
+    loading.style.zIndex = '0';
     loading.style.display = 'none';
     main.style.zIndex = '1000';
   }
