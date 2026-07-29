@@ -16,41 +16,32 @@ window.addEventListener('scroll', () => {
 
 function menutoggle() {
   const nav = document.querySelector("nav");
-  const toggle = document.getElementById("toggle");
-  const toggleMenu = document.querySelector(".togglemenu");
-  const icon = toggleMenu.querySelector("i");
   const menuBars = document.querySelectorAll(".menu-bars");
 
   nav.classList.toggle("show");
-  toggle.classList.toggle("show");
   menuBars.forEach(element => {
     element.classList.toggle("show");
   });
 }
 function toggleTheme() {
-  const body = document.body;
-  const themeIcon = document.getElementById('toggle');
-
-  body.classList.toggle('dark-mode');
-  if (body.classList.contains('dark-mode')) {
-    themeIcon.textContent = '☼';
-  } else {
-    themeIcon.textContent = '☽';
-  }
-  const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
-  localStorage.setItem('theme', theme);
+    const body = document.body;
+    body.classList.toggle("dark-mode");
+    const icon = body.classList.contains("dark-mode") ? "☼" : "☽";
+    document.querySelector(".desktop-toggle").textContent = icon;
+    localStorage.setItem(
+        "theme",
+        body.classList.contains("dark-mode") ? "dark" : "light"
+    );
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  const theme = localStorage.getItem('theme');
-  const themeIcon = document.getElementById('toggle');
-  if (theme === 'dark') {
-    document.body.classList.add('dark-mode');
-    themeIcon.textContent = '☼';
-  } else {
-    themeIcon.textContent = '☽';
-  }
+document.addEventListener("DOMContentLoaded", () => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+        document.body.classList.add("dark-mode");
+    }
+    const icon = theme === "dark" ? "☼" : "☽";
+    document.querySelector(".desktop-toggle").textContent = icon;
 });
+
 
 window.onload = function () {
   const progressBar = document.querySelector('.progress-bar');
